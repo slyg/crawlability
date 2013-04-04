@@ -1,12 +1,10 @@
 crawlability
 ============
 
-Installation
----
+###Installation
 
 <code>npm install</code>
 
-Start
----
+###Start
 
 <code>npm start</code>
