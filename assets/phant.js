@@ -1,7 +1,8 @@
 var 
-    rules   = require('../rules'),
-    targets = require('../targets'),
-    async   = require('async')
+    commonRules     = require('../rules'),
+    targets         = require('../targets'),
+    async           = require('async'),
+    report          = {}
 ;
 
 async.each(targets, function(target, next){
@@ -12,19 +13,21 @@ async.each(targets, function(target, next){
     
     page.open(target.url, function (status) {
     
-        console.log(target.url);
+        // console.log(target.url);
+        
+        report[target.url] = {};
         
         if (status !== 'success') { console.log('Unable to access network'); next(); } else {
         
-            var len = target.rules.length, tbe;
+            var len = target.rules.length, tbe, result;
             
             while(len--){
-                tbe = rules[target.rules[len]];
-                console.log(target.rules[len], " => ", 
-                    page.evaluate(
-                        tbe
-                    )
-                );
+            
+                // choose the rule to be tested
+                tbe = commonRules[target.rules[len]];
+                
+                // add result to the report
+                report[target.url][target.rules[len]] = page.evaluate(tbe)
             }
         }
         
@@ -33,6 +36,10 @@ async.each(targets, function(target, next){
     });
 
 }, function(err){
+
+    console.log(JSON.stringify(report));
+
+    //process.send("report", report);
     
     phantom.exit();
     

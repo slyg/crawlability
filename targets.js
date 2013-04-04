@@ -1,16 +1,15 @@
 module.exports = [
 
     {
-        url : 'http://www.viadeo.com/',
+        url : 'http://fr.viadeo.com/fr/profile/sylvain.faucherand',
         rules : [
-            'alt-img',
-            'title'
-        ]
-    },
-    {
-        url : 'http://join.viadeo.com/',
-        rules : [
-            'title'
+            'title',
+            'description',
+            'headings',
+            'ogp:og',
+            'ogp:twitter',
+            'link-img-alt',
+            'img-alt'
         ]
     }
 
