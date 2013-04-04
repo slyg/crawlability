@@ -12,12 +12,14 @@ async.each(targets, function(target, next){
     ;
     
     page.open(target.url, function (status) {
-    
-        // console.log(target.url);
         
         report[target.url] = {};
         
-        if (status !== 'success') { console.log('Unable to access network'); next(); } else {
+        if (status !== 'success') {
+            
+            report[target.url] = 'Unable to access network';
+            
+        } else {
         
             var len = target.rules.length, tbe, result;
             
