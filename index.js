@@ -9,7 +9,11 @@
     
     cspr.stdout.setEncoding('utf8'); 
     
-    cspr.stdout.on('data', function(report){
-        console.log(JSON.parse(report));
+    cspr.stdout.on('data', function(data){
+    
+        var report = JSON.parse(data);
+        
+        console.log(report);
+    
     });
    

@@ -1,9 +1,12 @@
 {
-  "name": "crawlability",
-  "version": "0.0.0",
-  "main": "index.js",
-  "dependencies": {
-    "q": "~0.9.2"
-  },
-  "license": "BSD"
+    "name": "crawlability",
+    "version": "0.0.0",
+    "main": "index.js",
+    "dependencies": {
+    "async": "~0.2.6"
+    },
+    "scripts": {
+        "start": "node index.js"
+    },
+    "license": "BSD"
 }
