@@ -11,6 +11,6 @@ module.exports = function title(){
         var test = titleMarkup.innerHTML != "";
         return test;
     
-    } else { return false; }
+    } else { return "void"; }
     
 }

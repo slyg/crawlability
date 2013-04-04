@@ -11,6 +11,6 @@ module.exports = function description(){
         var test = (descriptionMarkup.content != "");
         return test;
     
-    } else { return false; }
+    } else { return "void"; }
     
 }

@@ -3,12 +3,26 @@
 */
 
 module.exports = function ogTwitter(){
-    var test =  (document.querySelector("meta[name='twitter:card']").content != "") &&
-                (document.querySelector("meta[name='twitter:description']").content != "") &&
-                (document.querySelector("meta[name='twitter:title']").content != "") &&
-                (document.querySelector("meta[name='twitter:image']").content != "") &&
-                (document.querySelector("meta[name='twitter:site']").content != "")
-        
+    
+    var 
+        selectors = [
+            "meta[name='twitter:card']", 
+            "meta[name='twitter:description']",
+            "meta[name='twitter:title']",
+            "meta[name='twitter:image']",
+            "meta[name='twitter:site']"
+        ], 
+        attributeName = 'content',
+        len = selectors.length,
+        currentTarget = null,
+        result = "void"
     ;
-    return test;
+    
+    while(len--){
+        currentTarget =  document.querySelector(selectors[len]);
+        if(currentTarget) {result = (currentTarget[attributeName] != "") } else { break; }
+    }
+    
+    return result;
+    
 }

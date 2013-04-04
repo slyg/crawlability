@@ -9,7 +9,7 @@ module.exports = function imgAlt(){
         len = imgs.length,
         alt = null,
         altVal = "",
-        result = true
+        result = "void"
     ;
     
     while(len--){

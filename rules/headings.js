@@ -14,6 +14,6 @@ module.exports = function headings(){
         var test = (h1Markup.innerHTML != "") && (h2Markup.innerHTML != "");
         return test;
     
-    } else { return false; }
+    } else { return "void"; }
     
 }

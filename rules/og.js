@@ -4,14 +4,26 @@
 
 module.exports = function ogOg(){
 
-    var test =  (document.querySelector("meta[property='og:title']").content != "") &&
-                (document.querySelector("meta[property='og:description']").content != "") &&
-                (document.querySelector("meta[property='og:type']").content != "") &&
-                (document.querySelector("meta[property='og:locale']").content != "") &&
-                (document.querySelector("meta[property='og:site_name']").content != "") &&
-                (document.querySelector("meta[property='og:image']").content != "")
-        
+    var 
+        selectors = [
+            "meta[property='og:title']", 
+            "meta[property='og:description']",
+            "meta[property='og:type']",
+            "meta[property='og:locale']",
+            "meta[property='og:site_name']",
+            "meta[property='og:image']"
+        ], 
+        attributeName = 'content',
+        len = selectors.length,
+        currentTarget = null,
+        result = "void"
     ;
-    return test;
+    
+    while(len--){
+        currentTarget =  document.querySelector(selectors[len]);
+        if(currentTarget) {result = (currentTarget[attributeName] != "") } else { break; }
+    }
+    
+    return result;
     
 }
