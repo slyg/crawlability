@@ -36,12 +36,14 @@ async.each(targets, function(target, next){
         next();
     
     });
-
+    
 }, function(err){
 
-    console.log(JSON.stringify(report));
-
-    //process.send("report", report);
+    if(err) { 
+        console.log(JSON.stringify({error : err})); 
+    } else {
+       console.log(JSON.stringify(report)); 
+    }
     
     phantom.exit();
     
