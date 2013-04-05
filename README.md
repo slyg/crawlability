@@ -3,7 +3,8 @@ crawlability
 
 ###Installation
 
-<code>npm install</code>
+* Install [phantomjs cli](http://phantomjs.org/download.html)
+* then <code>npm install</code>
 
 ###Start
 
