@@ -12,38 +12,44 @@ async.each(targets, function(target, next){
     ;
     
     page.open(target.url, function (status) {
+    
+        var ctx = this;
         
         report[target.url] = {};
         
         if (status !== 'success') {
             
             report[target.url] = 'Unable to access network';
+            next();
             
         } else {
         
-            var len = target.rules.length, tbe, result;
-            
-            while(len--){
-            
-                // choose the rule to be tested
-                tbe = commonRules[target.rules[len]];
+            async.each(target.rules, function(rule, next){
                 
-                // add result to the report
-                report[target.url][target.rules[len]] = page.evaluate(tbe)
-            }
+                // select rule that has to be tested
+                var commonRule = commonRules[rule];
+                
+                // get action type (mainly browser or pageObject)
+                var context = commonRule.context;
+            
+                // select action
+                var action = commonRule.action;
+                
+                // add result to the report (should be sync)
+                report[target.url][rule] = (context == 'browser' ? page.evaluate(action) : action.call(ctx, status));
+                
+                next();
+                
+            }, function(err){ next(); });
+            
         }
-        
-        next();
     
     });
     
+    
 }, function(err){
 
-    if(err) { 
-        console.log(JSON.stringify({error : err})); 
-    } else {
-       console.log(JSON.stringify(report)); 
-    }
+    console.log(JSON.stringify( err ? {error : err} : {report : report} ));
     
     phantom.exit();
     

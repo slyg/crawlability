@@ -5,7 +5,8 @@ var allRules = [
     'ogp:og',
     'ogp:twitter',
     'link-img-alt',
-    'img-alt'
+    'img-alt',
+    'cookies'
 ];
 
 module.exports = [
@@ -16,7 +17,7 @@ module.exports = [
     {
         url : 'http://localhost:8080',
         rules : allRules
-    },
+    }/*,
     {
         url : 'http://unreachable/',
         rules : allRules
@@ -24,5 +25,5 @@ module.exports = [
     {
         url : 'http://fr.viadeo.com/fr/company/radiall',
         rules : allRules
-    }
+    }*/
 ];
