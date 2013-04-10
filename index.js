@@ -1,19 +1,26 @@
+// This module returns report as a Promise
+// See bin/crawlability to see use case
+
+var
+    Q          = require('q'),
+    phHandler  = require('./assets/phHandler')
+;
+
+module.exports = function getCrawlabilityReport(conf){
 
     var 
-        spawn   = require('child_process').spawn,
-        bin     = 'phantomjs',
-        args    = ['--config=./assets/config.phantom.json', './assets/phant.js']
+        conf = conf ? conf : require('./conf/default.json'),
+        phantomjsConf = conf.phantomjs,
+        targetsConf = conf.targets,
+        deferred = Q.defer()
     ;
     
-    var cspr = spawn(bin, args);
-    
-    cspr.stdout.setEncoding('utf8'); 
-    
-    cspr.stdout.on('data', function(data){
-    
-        var report = JSON.parse(data).report;
-        
-        console.log(report);
-    
+    phHandler(targetsConf, phantomjsConf).then(function(report){
+        deferred.resolve(report);
+    }, function(err){
+        deferred.reject(err);
     });
-   
+    
+    return deferred.promise;
+    
+};

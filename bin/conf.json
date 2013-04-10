@@ -1,0 +1,32 @@
+{
+    "phantomjs" : {
+        "load-images" : "false",
+        "outputEncoding": "utf8"
+    },
+    "targets" : [
+        {
+            "url" : "http://fr.viadeo.com/fr/profile/sylvain.faucherand",
+            "rules" : [
+                "title",
+                "description",
+                "headings",
+                "ogp:og",
+                "ogp:twitter",
+                "link-img-alt",
+                "img-alt"
+            ]
+        },
+        {
+            "url" : "http://localhost:8080",
+            "rules" : [
+                "title",
+                "description",
+                "headings",
+                "ogp:og",
+                "ogp:twitter",
+                "link-img-alt",
+                "img-alt"
+            ]
+        }
+    ]
+}

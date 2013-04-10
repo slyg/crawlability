@@ -46,13 +46,5 @@ module.exports = {
         context : 'browser', 
         action : require('./og-twitter'),
         value : 5
-    },
-    'has-cookies' : {
-        // just a test
-        context : 'pageObject',
-        action : function(status){
-            return this.cookies.length > 0;
-        },
-        value : 5
-    }     
+    }
 };
