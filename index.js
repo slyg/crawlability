@@ -9,7 +9,6 @@ var
 module.exports = function getCrawlabilityReport(conf){
 
     var 
-        conf = conf ? conf : require('./conf/default.json'),
         phantomjsConf = conf.phantomjs,
         targetsConf = conf.targets,
         deferred = Q.defer()
